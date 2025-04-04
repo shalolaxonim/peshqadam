@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   return (
     <header
       className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 bg-[#01434F] ${
-        isScrolled ? "shadow-lg py-3 py-[30px]" : "py-[40px]"
+        isScrolled ? "shadow-lg py-3 py-[15px]" : "py-[25px]"
       }`}
     >
       <Container className="container mx-auto flex items-center justify-between px-6 transition-all duration-300 text-white">

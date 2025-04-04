@@ -1,48 +1,55 @@
 import React from "react";
-import GoogleMapReact from "google-map-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
+import L from "leaflet";
 import Title from "../title";
 import Container from "../container";
 
-// Define interface for marker props
-interface MarkerProps {
-  lat: number;
-  lng: number;
-  text: string;
-}
+// Custom marker icon (fixes default icon issue in Leaflet)
+const customIcon = new L.Icon({
+  iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+  iconSize: [25, 41], // Default Leaflet marker size
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
 
-// Custom marker component
-const Marker: React.FC<MarkerProps> = ({ text }) => (
-  <div style={{ color: "red", fontWeight: "bold" }}>{text}</div>
-);
+// Library locations
+const libraries = [
+  { id: 1, name: "Library 1", lat: 41.2995, lng: 69.2401 }, // Tashkent
+  { id: 2, name: "Library 2", lat: 40.1033, lng: 65.3735 }, // Bukhara
+  { id: 3, name: "Library 3", lat: 40.7895, lng: 72.3586 }, // Namangan
+];
 
 const LibraryMap: React.FC = () => {
-  const defaultProps = {
-    center: { lat: 41.2995, lng: 69.2401 },
-    zoom: 6,
-  };
-
-  // Library locations
-  const libraries = [
-    { id: 1, name: "Library 1", lat: 41.2995, lng: 69.2401 }, // Tashkent
-    { id: 2, name: "Library 2", lat: 40.1033, lng: 65.3735 }, // Bukhara
-    { id: 3, name: "Library 3", lat: 40.7895, lng: 72.3586 }, // Namangan
-  ];
-
   return (
     <Container style={{ width: "100%" }} className="my-12">
-      <Title className="text-secondary text-center my-8">Bizning Kutubxonalar manzili</Title>
+      <Title className="text-secondary text-center my-8">
+        Bizning Kutubxonalar manzili
+      </Title>
       <div className="my-12">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.6456768595212!2d69.22340757587835!3d41.38178227130058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8d32144ea185%3A0xe184d354e821762b!2sPeshqadamlar%20Karvoni!5e0!3m2!1sen!2s!4v1743699613087!5m2!1sen!2s" width="100%" height="500" className="border:0;" loading="lazy"></iframe>
+        <MapContainer
+          center={[41.2995, 69.2401]} // Default center (Tashkent)
+          zoom={6}
+          style={{ height: "500px", width: "100%", zIndex: "0" }}
+        >
+          {/* OpenStreetMap Tile Layer */}
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          
+          {/* Markers for libraries */}
+          {libraries.map((library) => (
+            <Marker
+              key={library.id}
+              position={[library.lat, library.lng]}
+              icon={customIcon}
+            >
+              <Popup>{library.name}</Popup>
+            </Marker>
+          ))}
+        </MapContainer>
       </div>
-      {/* <GoogleMapReact
-        bootstrapURLKeys={{ key: "MY_GOOGLE_MAPS_API_KEY_SHALOLA" }} // Replace with your API key
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        {libraries.map((library) => (
-          <Marker key={library.id} lat={library.lat} lng={library.lng} text="Kutubxona" />
-        ))}
-      </GoogleMapReact> */}
     </Container>
   );
 };
