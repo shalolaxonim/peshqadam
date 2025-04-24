@@ -25,9 +25,9 @@ const ComponentWithSwitchButton: React.FC = () => {
   return (
     <Container className="py-4 lg:py-[50px] px-6">
       <div className="flex flex-col md:flex-row justify-between items-center">
-        <Title className="text-secondary">YO'NALISHLAR</Title>
+        <Title className="text-secondary dark:text-textDark">YO'NALISHLAR</Title>
         {/* Segmented Control */}
-        <div className="mt-4 flex justify-center bg-[#F9F9F9] rounded-[5px] p-1">
+        <div className="mt-4 flex justify-center bg-[#F9F9F9] rounded-[5px] dark:text-white dark:bg-[#0e1628] dark:border-white dark:border-2">
           {Object.keys(sections).map((option) =>
             selected === option ? (
               <Button key={option} onClick={() => setSelected(option)}>

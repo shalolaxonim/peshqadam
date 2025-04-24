@@ -29,35 +29,51 @@ const RegistrationForm: React.FC = () => {
         className="m-8 p-8 rounded-3xl shadow-xl lg:w-[50%] overflow-hidden"
         style={{ boxShadow: "0 5px 10px rgba(0, 0, 0, 0.2)" }}
       >
-        <Title className="text-secondary text-center">A'ZO BO'LISH</Title>
+        <Title className="text-secondary dark:text-textDark text-center">
+          A'ZO BO'LISH
+        </Title>
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Name Field */}
           <Form.Item>
-            <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">Ismingiz</label>
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+              Ismingiz
+            </label>
             <Controller
               name="name"
               control={control}
               rules={{ required: "Ismingizni kiriting" }}
               render={({ field }) => (
-                <Input placeholder="Ismingizni kiriting" {...field} variant="filled" className="h-12" />
+                <Input
+                  placeholder="Ismingizni kiriting"
+                  {...field}
+                  variant="filled"
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628]"
+                />
               )}
             />
           </Form.Item>
 
           {/* Direction Field */}
           <Form.Item>
-          <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">Yo'nalish</label>
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+              Yo'nalish
+            </label>
             <Controller
               name="direction"
               control={control}
               rules={{ required: "Yo‘nalishni tanlang" }}
               render={({ field }) => (
                 <Select
-                variant="filled"
-                className="h-12"
                   {...field}
-                  value={field.value} // instead of defaultValue
+                  value={field.value}
                   placeholder="Yo‘nalish tanlang"
+                  variant="filled"
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628] focus:bg-[#0e1628] !border-none !rounded-md"
+                  dropdownStyle={{
+                    backgroundColor: "#0e1628",
+                    color: "#f0f0f0",
+                  }}
+                  popupClassName="dark:bg-[#0e1628] dark:text-textDark"
                   options={[
                     { value: "Media", label: "Media yo’nalishi" },
                     {
@@ -81,7 +97,9 @@ const RegistrationForm: React.FC = () => {
 
           {/* Email Field */}
           <Form.Item>
-          <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">Elektron pochtangiz</label>
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+              Elektron pochtangiz
+            </label>
             <Controller
               name="email"
               control={control}
@@ -93,30 +111,50 @@ const RegistrationForm: React.FC = () => {
                 },
               }}
               render={({ field }) => (
-                <Input placeholder="Emailingizni kiriting" {...field} variant="filled" className="h-12" />
+                <Input
+                  placeholder="Emailingizni kiriting"
+                  {...field}
+                  variant="filled"
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628]"
+                />
               )}
             />
           </Form.Item>
 
           {/* Location Field */}
           <Form.Item>
-          <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">Manzilingiz</label>
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+              Manzilingiz
+            </label>
             <Controller
               name="location"
               control={control}
               rules={{ required: "Manzilni tanlang" }}
               render={({ field }) => (
                 <Select
-                  variant="filled"
-                  className="h-12"
                   {...field}
                   value={field.value}
+                  variant="filled"
                   placeholder="Manzilni tanlang"
-                  options={[
-                    { value: "Toshkent", label: "Toshkent" },
-                    { value: "Farg'ona", label: "Farg'ona" },
-                    { value: "Boshqa", label: "Boshqa" },
-                  ]}
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628] focus:bg-[#0e1628]"
+                  // Dropdown container dark style
+                  dropdownStyle={{
+                    backgroundColor: "#0e1628",
+                    color: "#f0f0f0",
+                  }}
+                  // Dropdown panel tailwind dark mode
+                  popupClassName="dark:bg-[#0e1628] dark:text-textDark"
+                  // Dark mode placeholder (Antd doesn't pass tailwind to internal span, this helps)
+                  listHeight={256} // optional, controls scroll
+                  options={["Toshkent", "Farg'ona", "Boshqa"].map((city) => ({
+                    value: city,
+                    label: city,
+                  }))}
+                  // options={[
+                  //   { value: "Toshkent", label: "Toshkent" },
+                  //   { value: "Farg'ona", label: "Farg'ona" },
+                  //   { value: "Boshqa", label: "Boshqa" },
+                  // ]}
                 />
               )}
             />
@@ -125,23 +163,31 @@ const RegistrationForm: React.FC = () => {
           {/* Checkbox for Terms and Privacy */}
           <Form.Item>
             <Checkbox
+              className="text-qora dark:text-textDark"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
             >
-              Men <a href="/terms">foydalanish shartlari</a> va{" "}
-              <a href="/privacy">maxfiylik siyosatini</a> qabul qilaman
+              Men{" "}
+              <a className="hover:text-sariq" href="/terms">
+                foydalanish shartlari
+              </a>{" "}
+              va{" "}
+              <a className="hover:text-sariq" href="/privacy">
+                maxfiylik siyosatini
+              </a>{" "}
+              qabul qilaman
             </Checkbox>
           </Form.Item>
 
           {/* Submit Button */}
           <div className="">
-          <Button type="submit" disabled={!agreed}>
-            Ro‘yxatdan o‘tish
-          </Button>
+            <Button type="submit" disabled={!agreed}>
+              Ro‘yxatdan o‘tish
+            </Button>
           </div>
         </div>
       </form>
     </div>
   );
 };
-export default RegistrationForm
+export default RegistrationForm;

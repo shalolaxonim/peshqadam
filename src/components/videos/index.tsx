@@ -95,7 +95,7 @@ const videosData: VideosItem[] = [
 const VideosSection: React.FC = () => {
   return (
     <Container className="py-10 flex justify-between items-center flex-col gap-[30px]">
-      <Title className="text-secondary">Videolar</Title>
+      <Title className="text-secondary dark:text-textDark">Videolar</Title>
       {/* News Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {videosData.map((news) => (

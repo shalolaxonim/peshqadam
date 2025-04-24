@@ -58,7 +58,7 @@ const projects = [
 const YoriqnomaPart: React.FC = () => {
   return (
     <Container className="py-4 md:py-8 text-center flex flex-col gap-4 md:gap-8">
-      <Title className="text-secondary">
+      <Title className="text-secondary dark:text-textDark">
         Yo'nalishga a'zo bo'lish yo'riqnomasi
       </Title>
       <div className="flex justify-center lg:gap-20 flex-wrap items-center">

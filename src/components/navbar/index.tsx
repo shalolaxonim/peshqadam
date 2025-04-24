@@ -6,6 +6,8 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Drawer, Button } from "antd";
 import Container from "../container";
 import "antd/dist/reset.css";
+import { useThemeStore } from "@/stores/themeStore";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const navLinks = [
   { to: "/", label: "Bosh sahifa" },
@@ -27,6 +29,20 @@ const Navbar: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const { theme, toggleTheme } = useThemeStore();
+  const ThemeToggle = () => {
+
+
+    return (
+      <div onClick={toggleTheme}>
+        {theme === "light" ? (
+          <FaSun className="h-5 w-5 text-primary" />
+        ) : (
+          <FaMoon className="h-5 w-5" />
+        )}
+      </div>
+    );
+  };
 
   return (
     <header
@@ -57,6 +73,11 @@ const Navbar: React.FC = () => {
           ))}
         </nav>
 
+        {/* Theme Toggle Button */}
+        <div className="hidden md:flex">
+          <ThemeToggle />
+        </div>
+
         {/* Mobile Menu Button */}
         <Button
           className="md:hidden p-2 text-white hover:bg-white/10"
@@ -85,13 +106,17 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsDrawerOpen(false)}
                 className={({ isActive }) =>
                   `block px-4 py-2 rounded-md transition ${
-                    isActive ? "text-yellow-500 font-bold" : "text-white hover:bg-white/10"
+                    isActive
+                      ? "text-yellow-500 font-bold"
+                      : "text-white hover:bg-white/10"
                   }`
                 }
               >
                 {link.label}
               </NavLink>
             ))}
+            {/* Mobile toggle */}
+            <ThemeToggle />
           </nav>
         </Drawer>
       </Container>

@@ -23,7 +23,7 @@ const libraries = [
 const LibraryMap: React.FC = () => {
   return (
     <Container style={{ width: "100%" }} className="my-12">
-      <Title className="text-secondary text-center my-8">
+      <Title className="text-secondary dark:text-textDark text-center my-8">
         Bizning Kutubxonalar manzili
       </Title>
       <div className="my-12">

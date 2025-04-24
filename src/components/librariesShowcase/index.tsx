@@ -7,10 +7,10 @@ const LibraryShowcase: React.FC = () => {
     <Container className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-20 px-8 py-4 md:py-6 lg:mt-[50px]">
       {/* Left Side - Text */}
       <div className="lg:w-1/2">
-        <Title className="text-secondary">
+        <Title className="text-secondary dark:text-textDark">
           Kutubxonalar tashkil qilish va ularni kitoblar bilan ta’minlash
         </Title>
-        <p className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+        <p className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
           Kutubxonalar tashkil etish va ularni kitoblar bilan ta’minlash
           yoʻnalishi loyihaning birinchi yoʻnalishi hisoblanib, oʻz oldiga
           kitobxonlar uchun bepul kitoblarni yetkazib berishni maqsad

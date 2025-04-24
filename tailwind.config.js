@@ -2,7 +2,7 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 export default {
-  darkMode: ["class"],
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
@@ -12,49 +12,53 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
+        // gold
         primary: {
+          light: "#f0fdfa",
           DEFAULT: "#E6B15D",
-          foreground: "hsl(var(--primary-foreground))",
+          dark: "#0f766e",
         },
         secondary: {
+          // teal
+          light: "#f0fdfa",
           DEFAULT: "#025463",
-          foreground: "hsl(var(--secondary-foreground))",
+          dark: "#0f766e",
         },
         darkSecondary: {
+          // gray
+          light: "#f0fdfa",
           DEFAULT: "#6b7280",
-          foreground: "hsl(var(--darkSecondary-foreground))",
+          dark: "#0f766e",
         },
         qora: {
+          // black
+          light: "#f0fdfa",
           DEFAULT: "#181818",
-          foreground: "hsl(var(--muted-foreground))",
+          dark: "#0f766e",
         },
         kulrang: {
+          // dark gray
+          light: "#f0fdfa",
           DEFAULT: "#5B5B5B",
-          foreground: "hsl(var(--accent-foreground))",
+          dark: "#0f766e",
         },
         sariq: {
+          // yellow
+          light: "#f0fdfa",
           DEFAULT: "#E6B05D",
-          foreground: "hsl(var(--destructive-foreground))",
+          dark: "#0f766e",
         },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          1: "hsl(var(--chart-1))",
-          2: "hsl(var(--chart-2))",
-          3: "hsl(var(--chart-3))",
-          4: "hsl(var(--chart-4))",
-          5: "hsl(var(--chart-5))",
+        textDark: {
+          // oq
+          light: "#f0fdfa",
+          DEFAULT: "#ffffff",
+          dark: "#0f766e",
+        },
+        bgDark: {
+          // kok
+          light: "#f0fdfa",
+          DEFAULT: "#0f172a",
+          dark: "#0f766e",
         },
       },
       fontFamily: {
@@ -85,7 +89,7 @@ export default {
     },
     function ({ addBase }) {
       addBase({
-        "html": { scrollBehavior: "smooth" },
+        html: { scrollBehavior: "smooth" },
         "::-webkit-scrollbar": { width: "8px", height: "8px" },
         "::-webkit-scrollbar-thumb": {
           backgroundColor: "theme(colors.secondary)",

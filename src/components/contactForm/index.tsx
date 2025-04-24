@@ -21,13 +21,13 @@ const ContactForm: React.FC = () => {
         className="m-4 p-8 rounded-3xl shadow-xl md:w-[75%] lg:w-[35%] overflow-hidden"
         style={{ boxShadow: "0 5px 10px rgba(0, 0, 0, 0.2)" }}
       >
-        <Title className="text-secondary text-center">
+        <Title className="text-secondary dark:text-textDark text-center">
           savollar, takliflar va mulohazalaringizni bizga yuboring
         </Title>
         <div className="flex flex-col gap-4">
           {/* Name Field */}
           <Form.Item>
-            <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
               Ismingiz
             </label>
             <Controller
@@ -39,7 +39,7 @@ const ContactForm: React.FC = () => {
                   placeholder="Ismingizni kiriting"
                   {...field}
                   variant="filled"
-                  className="h-12"
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628]"
                 />
               )}
             />
@@ -47,7 +47,7 @@ const ContactForm: React.FC = () => {
 
           {/* Phone Field */}
           <Form.Item>
-            <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
               Telefon raqamingiz
             </label>
             <Controller
@@ -55,20 +55,33 @@ const ContactForm: React.FC = () => {
               control={control}
               rules={{
                 required: "Telefon raqamingizni kiriting",
+                pattern: {
+                  value: /^\+998\d{9}$/, // Must start with +998 and have exactly 9 digits after
+                  message: "To'g'ri telefon raqamini kiriting (+998901234567)",
+                },
               }}
               render={({ field }) => (
                 <Input
-                  placeholder="+998901234567"
+                  type="tel"
                   {...field}
+                  placeholder="+998901234567"
+                  maxLength={13}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    // Allow only "+" at the beginning and digits after
+                    if (/^\+?\d*$/.test(value)) {
+                      field.onChange(value);
+                    }
+                  }}
                   variant="filled"
-                  className="h-12"
+                  className="h-12 dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628]"
                 />
               )}
             />
           </Form.Item>
           {/* Comments Field */}
           <Form.Item>
-            <label className="text-qora font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
+            <label className="text-qora dark:text-textDark font-cormorant sm:text-cormorantSmall lg:text-cormorantBig">
               Savol, taklif va mulohazalar
             </label>
             <Controller
@@ -82,7 +95,7 @@ const ContactForm: React.FC = () => {
                   placeholder="Taklif va mulohazalaringizni kiriting"
                   {...field}
                   rows={5}
-                  className="bg-gray-100 border-none focus:ring-2 focus:ring-gray-300 rounded-[8px]"
+                  className="bg-gray-100 border-none focus:ring-2 focus:ring-gray-300 rounded-[8px] dark:text-textDark dark:placeholder:text-textDark dark:bg-[#0e1628]"
                 />
               )}
             />

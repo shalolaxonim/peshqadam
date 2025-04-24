@@ -47,8 +47,8 @@ const Statistics: React.FC = () => {
       <div className="flex justify-center flex-wrap gap-6">
         {statistics.map((project, index) => (
           <div key={index} className="p-6 shadow-lg rounded-lg w-[280px]">
-            <CountUp className="text-3xl font-bold text-center mb-2" end={project.number} duration={10} start={startCount ? 0 : undefined}></CountUp>
-            <p className="text-gray-700 leading-relaxed mb-4">{project.text}</p>
+            <CountUp className="text-3xl font-bold text-center mb-2 text-qora dark:text-textDark" end={project.number} duration={10} start={startCount ? 0 : undefined}></CountUp>
+            <p className="text-kulrang dark:text-textDark leading-relaxed mb-4">{project.text}</p>
           </div>
         ))}
       </div>

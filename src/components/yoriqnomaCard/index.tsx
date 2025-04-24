@@ -22,11 +22,11 @@ const YoriqnomaCard: React.FC<DirectionCardProps> = ({
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[5]"
           />
         </div>
-        <h3 className="text-biggest font-bold text-kulrang font-cormorant">
+        <h3 className="text-biggest font-bold text-kulrang dark:text-textDark font-cormorant">
           {number}
         </h3>
       </div>
-      <p className="text-cormorantSmall text-qora font-cormorant">{text}</p>
+      <p className="text-cormorantSmall text-qora dark:text-textDark font-cormorant">{text}</p>
     </div>
   );
 };

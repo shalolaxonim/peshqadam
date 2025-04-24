@@ -32,7 +32,7 @@ const FAQ: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-6">
-      <Title className="text-secondary text-center my-[20px]">Tez-Tez So‘raladigan Savollar</Title>
+      <Title className="text-secondary dark:text-textDark text-center my-[20px]">Tez-Tez So‘raladigan Savollar</Title>
       <div className="grid md:grid-cols-2 gap-6">
         {faqData.map((item, index) => (
           <div
@@ -41,15 +41,15 @@ const FAQ: React.FC = () => {
             onClick={() => toggleFAQ(index)}
           >
             <div className="flex justify-between items-center">
-              <p className="sm:text-cormorantSmall lg:text-cormorantBig font-cormorant text-qora">{item.question}</p>
+              <p className="sm:text-cormorantSmall lg:text-cormorantBig font-cormorant text-qora dark:text-textDark">{item.question}</p>
               {openIndex === index ? (
-                <FaMinus className="text-[#01434F]" />
+                <FaMinus className="text-[#01434F] dark:text-sariq" />
               ) : (
-                <FaPlus className="text-[#01434F]" />
+                <FaPlus className="text-[#01434F] dark:text-sariq" />
               )}
             </div>
             {openIndex === index && (
-              <p className="sm:text-cormorantSmall lg:text-cormorantBig text-qora">{item.answer || "Javob hozircha mavjud emas."}</p>
+              <p className="text-cormorantSmall text-qora dark:text-textDark">{item.answer || "Javob hozircha mavjud emas."}</p>
             )}
           </div>
         ))}

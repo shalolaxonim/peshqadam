@@ -49,7 +49,7 @@ const NewsSection: React.FC = () => {
     <Container className="py-4 md:py-10 px-6">
       {/* Section Title */}
       <div className="flex justify-between items-center flex-wrap">
-        <Title className="text-secondary sm:text-cormorantSmall md:text-cormorantBig lg:text-middleSize">YANGILIKLAR</Title>
+        <Title className="text-secondary dark:text-textDark sm:text-cormorantSmall md:text-cormorantBig lg:text-middleSize">YANGILIKLAR</Title>
         <Link to={`/yangiliklar`}><Button>Barchasini ko‘rish</Button></Link>
       </div>
 
